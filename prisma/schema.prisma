@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Collection {
+  id        Int        @id @default(autoincrement())
+  name      String
+  slug      String     @unique
+  documents Document[]
+}
+
+model Document {
+  id           Int        @id @default(autoincrement())
+  title        String
+  content      String
+  collectionId Int
+  collection   Collection @relation(fields: [collectionId], references: [id])
+}

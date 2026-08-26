@@ -1,0 +1,26 @@
+{
+  "name": "document-vault",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/server.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.1",
+    "@prisma/client": "^5.22.0",
+    "graphql": "^17.0.2",
+    "graphql-yoga": "^5.22.0",
+    "hono": "^4.13.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "prisma": "^5.22.0",
+    "typescript": "^5.0.0"
+  },
+  "description": "To install dependencies:",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

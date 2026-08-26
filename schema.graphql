@@ -1,0 +1,25 @@
+type Collection {
+  id: ID!
+  name: String!
+  slug: String!
+  documents: [Document!]!
+}
+
+type Document {
+  id: ID!
+  title: String!
+  content: String!
+  collectionId: Int!
+  collection: Collection!
+}
+
+type Query {
+  documents(search: String, skip: Int, take: Int): [Document!]!
+  collections: [Collection!]!
+}
+
+type Mutation {
+  createDocument(title: String!, content: String!, collectionId: Int!): Document!
+  deleteDocument(id: Int!): String!
+  moveDocument(id: Int!, collectionId: Int!): Document!
+}
