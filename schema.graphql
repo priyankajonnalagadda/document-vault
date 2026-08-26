@@ -1,25 +1,54 @@
 type Collection {
-  id: ID!
+  id: Int!
   name: String!
   slug: String!
+  createdAt: String!
   documents: [Document!]!
 }
 
 type Document {
-  id: ID!
+  id: Int!
   title: String!
   content: String!
+  tags: [String!]!
+  isArchived: Boolean!
+  createdAt: String!
   collectionId: Int!
-  collection: Collection!
 }
 
 type Query {
-  documents(search: String, skip: Int, take: Int): [Document!]!
   collections: [Collection!]!
+
+  collection(id: Int!): Collection
+
+  documents(
+    collectionId: Int
+    search: String
+    isArchived: Boolean
+    take: Int
+    cursor: Int
+  ): [Document!]!
 }
 
 type Mutation {
-  createDocument(title: String!, content: String!, collectionId: Int!): Document!
-  deleteDocument(id: Int!): String!
+  createCollection(name: String!, slug: String!): Collection!
+
+  createDocument(
+    title: String!
+    content: String!
+    tags: [String!]
+    collectionId: Int!
+  ): Document!
+
+  updateDocument(
+    id: Int!
+    title: String
+    content: String
+    tags: [String!]
+    isArchived: Boolean
+  ): Document!
+
+  deleteDocument(id: Int!): Document!
+
   moveDocument(id: Int!, collectionId: Int!): Document!
 }
