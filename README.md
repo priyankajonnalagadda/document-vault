@@ -1,29 +1,25 @@
 # 📄 Document Vault API
 
-A backend application built using GraphQL, Prisma, PostgreSQL, and Bun to manage documents efficiently with advanced features like search, pagination, and document movement between collections.
+A GraphQL-based Document Vault API built using **Bun, GraphQL Yoga, and Hono-style server setup**. This project allows users to create, read, update, and delete documents efficiently. Designed as a modern backend project to demonstrate API development skills.
 
 ---
 
-## 🚀 Tech Stack
+## 🚀 Features
 
-- Bun – Runtime  
-- Hono – Web Framework  
-- GraphQL Yoga – API Layer  
-- Prisma ORM – Database Toolkit  
-- PostgreSQL – Database  
+- Create documents
+- Fetch all documents
+- Update document details
+- Delete documents
+- GraphQL API with interactive UI
+- Fast runtime using Bun
 
 ---
 
-## ✨ Features
+## 🛠️ Tech Stack
 
-- ➕ Create Document  
-- 📄 Read Documents (with Pagination)  
-- ✏️ Update Document  
-- ❌ Delete Document  
-- 🔍 Search Documents (by title & content)  
-- 🔁 Move Document between Collections  
-- ⚡ Fast GraphQL API  
-- 🛡️ Input Validation  
+- Bun (Runtime)
+- GraphQL Yoga
+- TypeScript
 
 ---
 
@@ -31,76 +27,97 @@ A backend application built using GraphQL, Prisma, PostgreSQL, and Bun to manage
 
 ```
 document-vault/
-│── prisma/
-│   └── schema.prisma
-│
 │── index.ts
-│── .env
+│── schema.graphql
 │── package.json
+│── tsconfig.json
 │── README.md
 ```
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Installation
+
+Clone the repository:
 
 ```bash
-# Install dependencies
-bun install
+git clone https://github.com/priyankajonnalagadda/document-vault.git
+cd document-vault
+```
 
-# Run server
+Install dependencies:
+
+```bash
+bun install
+```
+
+---
+
+## ▶️ Run the Server
+
+```bash
 bun run index.ts
 ```
 
----
+Server will start at:
 
-## 🌐 API Endpoint
-
+```
 http://localhost:4000/graphql
+```
 
 ---
 
-## 🧪 Example Queries
+## 🧪 Testing (GraphQL Playground)
 
-### 📄 Get Documents (Pagination)
+Open in browser:
+
+```
+http://localhost:4000/graphql
+```
+
+---
+
+## 📌 Example Queries
+
+### 🔍 Get All Documents
+
 ```graphql
 query {
-  documents(skip: 0, take: 5) {
+  documents {
     id
     title
+    content
   }
 }
 ```
 
-### 🔍 Search Documents
-```graphql
-query {
-  searchDocuments(query: "doc") {
-    id
-    title
-  }
-}
-```
+---
 
 ### ➕ Create Document
+
 ```graphql
 mutation {
   createDocument(
-    title: "Sample"
-    content: "Hello"
+    title: "New Doc"
+    content: "Sample content"
     collectionId: 1
   ) {
     id
+    title
   }
 }
 ```
 
+---
+
 ### ✏️ Update Document
+
 ```graphql
 mutation {
   updateDocument(
     id: 1
     title: "Updated Title"
+    content: "Updated content"
   ) {
     id
     title
@@ -108,34 +125,40 @@ mutation {
 }
 ```
 
+---
+
 ### ❌ Delete Document
+
 ```graphql
 mutation {
   deleteDocument(id: 1)
 }
 ```
 
-### 🔁 Move Document
-```graphql
-mutation {
-  moveDocument(id: 1, collectionId: 2) {
-    id
-    collectionId
-  }
-}
-```
+---
+
+## 📈 Future Improvements
+
+- Connect with PostgreSQL using Prisma
+- Add authentication (JWT)
+- Implement search & pagination
+- Organize into modular folder structure
+- Deploy to cloud (Render / Railway / Vercel)
 
 ---
 
-## 🎯 Learning Outcomes
+## 🌐 Live Repository
 
-- Built a complete GraphQL API from scratch  
-- Integrated Prisma with PostgreSQL  
-- Implemented search and pagination  
-- Designed a scalable backend architecture  
+👉 https://github.com/priyankajonnalagadda/document-vault
 
 ---
 
 ## 👩‍💻 Author
 
-Priyanka Jonnalagadda
+**Priyanka Jonnalagadda**
+
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub!
